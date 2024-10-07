@@ -36,7 +36,7 @@ We welcome contributions to the DCFE project! To contribute, please follow these
 5. Create a pull request.
 
 ## License
-This project is licensed under the GNU License. See the LICENSE file for more details.
+This project is licensed under the GPL-3.0 license License. See the LICENSE file for more details.
 
 ## Contact
 For any questions or suggestions, please contact us at 20241918@dcfe.ie
