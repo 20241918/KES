@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -5,7 +6,10 @@
 <title>Earth's 10 Most Beautiful Beaches - Locations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
 <style>
 html{
     scroll-behavior: smooth;
@@ -15,14 +19,24 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Gluten", cursive;
-    font-optical-sizing: auto;
+}
+
+.roboto-condensed {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+.oleo {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
     line-height: 1.6;
     overflow-x: hidden;
-    animation: startup 2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: startup 2s cubic-bezier(.34,.94,.87,.26) both;
 }
 
 nav {
@@ -40,7 +54,7 @@ nav {
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .nav-links a {
@@ -107,7 +121,7 @@ nav {
     background-color: #244f66c4;
     padding: 2vh;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    background: linear-gradient(62deg, deepskyblue, #2d76b5, #1a9285, #096984, #0c66a1, #069f7a);
+    background: linear-gradient(62deg, #00bfffa6, #2d76b5, #1a92858f, #09698469, #0c66a1, #069f7aa6);
     background-size: 360% 360%;
     animation: gradient-animation 18s ease infinite;
 }
@@ -120,7 +134,7 @@ nav {
     background-color: #244f66c4;
     padding: 2vh;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(245deg, deepskyblue, #2d76b5, #1a9285, #096984, #0c66a1, #069f7a);
+    background: linear-gradient(245deg, #00bfffa6, #2d76b5, #1a92858f, #09698469, #0c66a1, #069f7aa6);
     background-size: 360% 360%;
     animation: gradient-animation 18s ease infinite;
 }
@@ -150,7 +164,7 @@ nav {
 .beach-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 3rem;
     margin: 2rem 0;
 }
 
@@ -176,7 +190,7 @@ nav {
     mix-blend-mode: normal;
     overflow: hidden;
     box-shadow: 0px 0px 4px 6px rgba(22,167,199,1);
-    transition: all 0.2s;
+    transition: all 1s cubic-bezier(0,.81,.95,.22);
 }
 
 .beach-info {
@@ -227,13 +241,22 @@ iframe{
 /* Animations */
 
 @keyframes startup {
-  0% {
-            filter: blur(6px) grayscale(100%);
+     0% {
+            filter: blur(16px) grayscale(100%);
             background-color: black;
     opacity: 0;
   }
+
+  30% {
+            filter: blur(10px) grayscale(100%) hue-rotate(150deg);
+            background-color: black;
+
+    opacity: 0.7;
+  }
+
+
   100% {
-            filter: blur(0px) grayscale(0%);
+            filter: blur(0px) grayscale(0%) hue-rotate(0deg);
             background-color: transparent;
     opacity: 1;
   }
@@ -256,12 +279,35 @@ iframe{
   }
 }
 
+/* nav links animation*/
+@keyframes tilt-in-fwd-tr {
+  0% {
+    filter: blur(20px);
+    transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+     transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+    opacity: 1;
+  }
+}
+
 /* Add to existing nav styles */
-@media (max-width: 768px) {
+@media (max-width: 1250px) {
+    #home{
+    margin-top:-9vh;
+    }
+
+    nav {
+    background: transparent;
+    
+    }
     .nav-links {
         flex-direction: column;
         align-items: center;
         padding: 1rem 0;
+        gap: 2.1rem;
     }
     
     .nav-links a {
@@ -286,6 +332,7 @@ iframe{
         background: linear-gradient(62deg, deepskyblue, #2d76b5, #1a9285, #096984, #0c66a1, #069f7a);
         background-size: 360% 360%;
         animation: gradient-animation 18s ease infinite;
+        animation: tilt-in-fwd-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 
     /* Hamburger animation classes */
@@ -300,10 +347,6 @@ iframe{
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-}
-
-/* Add to existing landing-hero styles */
-@media (max-width: 768px) {
     .landing-hero {
         height: 100vh;
     }
@@ -316,10 +359,6 @@ iframe{
         font-size: 1rem;
         padding: 6vmin;
     }
-}
-
-/* Add to existing styles */
-@media (max-width: 768px) {
     .location-section {
         padding: 1rem;
     }
@@ -333,8 +372,7 @@ iframe{
     }
 
     .beach-gallery {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 0.5rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .gallery-img {
@@ -346,14 +384,7 @@ iframe{
     }
 }
 
-/* Add to existing styles */
-@media (max-width: 1024px) {
-    .beach-gallery {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .details {
         padding: 1rem;
     }
@@ -366,7 +397,7 @@ iframe{
 }
 </style>
 </head>
-<body>
+<body class="roboto-condensed">
 
 <nav>
     <button class="hamburger">
@@ -375,22 +406,22 @@ iframe{
         <span class="bar"></span>
     </button>
     <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#borabora">Bora Bora</a>
-        <a href="#seychelles">Seychelles</a>
-        <a href="#greece">Greece</a>
-        <!--<a href="#home">Home</a>
-        <a href="#borabora">Bora Bora</a>
-        <a href="#seychelles">Seychelles</a>
-        <a href="#greece">Greece</a>
-        <a href="#seychelles">Seychelles</a>
-        <a href="#greece">Greece</a>-->
+        <a href="#home">Home</a>                        <!---line 391--->
+        <a href="#borabora">Bora Bora</a>               <!---line 400--->
+        <a href="#seychelles">Seychelles</a>            <!---line 455---> 
+        <a href="#greece">Greece</a>                    <!---line 553--->
+        <a href="#australia">Australia</a>              <!---line 603--->
+        <a href="#thailand">Thailand</a>                <!---line 653--->
+        <a href="#mexico">Mexico</a>                    <!---line 703--->
+        <a href="#bahamas">Bahamas</a>                  <!---line 753--->
+        <a href="#virgin">US Virgin Islands</a>         <!---line 803--->
+        <a href="#turks">Turks and Caicos</a>           <!---line 853--->
     </div>
 </nav>
 
 <section class="landing-hero" id="home">
     <div class="hero-content">
-        <h1>Earth's 10 Most Beautiful Beaches</h1>
+        <h1 class="oleo">Earth's 10 Most Beautiful Beaches</h1>
         <p>Discover paradise on Earth through our curated collection of the world's most stunning coastal destinations. From pristine white sands to crystal-clear waters, explore the beauty that nature has to offer.</p>
     </div>
 </section>
@@ -400,24 +431,24 @@ iframe{
     <div class="gap" id="borabora"></div>
 
     <section class="beach-detail">
-        <h2>Matira Beach, Bora Bora</h2>
+        <h2 class="oleo">Matira Beach, Bora Bora</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img data-tilt data-tilt-scale="1.001" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/0f/e9/9b/matira-beach-bora-bora.jpg?w=1000&h=-1&s=1" 
                  alt="Aerial view of Matira Beach showing the curved peninsula and turquoise lagoon" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://img.freepik.com/premium-photo/stunning-maldives-sunset-with-overwater-bungalows_818261-12324.jpg?w=900" 
                  alt="Stunning sunset over Matira Beach with overwater bungalows in silhouette" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://worlds50beaches.com/assets/images/beaches-2023/371.webp" 
                  alt="White sand beach and crystal clear waters of Matira Beach with palm trees" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://worlds50beaches.com/assets/images/beaches-2023/372.webp" 
                  alt="White sand beach and crystal clear waters of Matira Beach with palm trees" 
                  class="gallery-img" 
                  width="400" 
@@ -455,19 +486,24 @@ iframe{
 <div class="gap" id="seychelles"></div>
 
     <section class="beach-detail">
-        <h2>Anse Source d'Argent, Seychelles</h2>
+        <h2 class="oleo">Anse Source d'Argent, Seychelles</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://images.goway.com/production/styles/hero_s1_3xl/s3/hero/iStock-1412139990.jpg?h=ab6387a7&itok=Srq7V9CW" 
                  alt="Iconic granite boulders framing pristine beach at sunset" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/8f/b9/c8/anse-source-d-argent.jpg?w=900&h=500&s=1" 
                  alt="Crystal clear turquoise waters against dramatic rock formations" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.worldbeachguide.com/photos/large/anse-source-dargent.webp" 
+                 alt="Palm trees leaning over white sand beach with unique rock formations" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://i0.wp.com/missvacation.net/wp-content/uploads/2024/09/Q2A6158-1-scaled.jpg?resize=900%2C450&ssl=1" 
                  alt="Palm trees leaning over white sand beach with unique rock formations" 
                  class="gallery-img" 
                  width="400" 
@@ -502,202 +538,8 @@ iframe{
         </div>
     </section>
 
-    <div class="gap" id="greece"></div>
-
     <section class="beach-detail">
-        <h2>Navagio Beach, Greece</h2>
-        <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Aerial view of shipwreck beach with turquoise waters and limestone cliffs" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Famous shipwreck on white sand beach surrounded by steep cliffs" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Sunset view of Navagio Beach with golden light on limestone walls" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-        </div>
-        <div class="beach-info">
-            <div class="description">
-                <p>Also known as Shipwreck Beach, Navagio Beach is one of the most dramatic beaches in the world. Located on Zakynthos Island, this stunning cove is only accessible by boat and features a famous shipwreck set against limestone cliffs and crystal-clear waters.</p>
-                <p>The beach got its nickname from the MV Panagiotis shipwreck, which ran aground in 1980. The contrast of the rusting ship against the pristine white beach and turquoise waters creates a unique and unforgettable scene.</p>
-            </div>
-            <div class="details">
-                <h4>Location Details</h4>
-                <ul>
-                    <li>📍 Zakynthos Island, Greece</li>
-                    <li>🌡️ Average temp: 18-28°C (64-82°F)</li>
-                    <li>🏊‍♂️ Best for: Photography, Swimming</li>
-                    <li>⏰ Best time to visit: May to September</li>
-                    <li>✈️ Nearest airport: Zakynthos International Airport (ZTH)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="map-container">
-            <iframe 
-                width="100%"
-                height="100%"
-                style="border:0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25217.08927802151!2d20.62076975038519!3d37.968838355207376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1350125041605d91%3A0x9c999cbfbd4528a4!2sNavagio%20Beach!5e1!3m2!1sen!2sie!4v1730222455125!5m2!1sen!2sie"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-    <section class="beach-detail">
-        <h2>Whitehaven Beach, Australia</h2>
-        <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Aerial view of swirling white sand and turquoise waters at Hill Inlet" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Pure white silica sand beach stretching for miles" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Crystal clear waters meeting pristine white sand at Whitehaven Beach" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-        </div>
-        <div class="beach-info">
-            <div class="description">
-                <p>Whitehaven Beach is known for its stunning white silica sand and crystal-clear waters. Located on Whitsunday Island in Australia, this beach stretches for 7 kilometers and is celebrated for its pristine environment and breathtaking colors.</p>
-                <p>The beach is accessible by boat, seaplane, or helicopter, making it a perfect spot for day trips and picturesque views from above.</p>
-            </div>
-            <div class="details">
-                <h4>Location Details</h4>
-                <ul>
-                    <li>📍 Whitsunday Island, Australia</li>
-                    <li>🌡️ Average temp: 24-30°C (75-86°F)</li>
-                    <li>🏊‍♂️ Best for: Swimming, Sunbathing</li>
-                    <li>⏰ Best time to visit: May to September</li>
-                    <li>✈️ Nearest airport: Hamilton Island Airport (HTI)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="map-container">
-            <iframe 
-                width="100%"
-                height="100%"
-                style="border:0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12290.137034319992!2d149.04347120000003!3d-20.2995624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ab3bbba09c355c1%3A0x5c07e45f5b5825e2!2sWhitehaven%20Beach!5e1!3m2!1sen!2sie!4v1730222576201!5m2!1sen!2sie"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-    <section class="beach-detail">
-        <h2>Maya Bay, Thailand</h2>
-        <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Stunning view of Maya Bay surrounded by limestone cliffs" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Clear turquoise waters and soft sandy beach at Maya Bay" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Lush green hills surrounding the beach at Maya Bay" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-        </div>
-        <div class="beach-info">
-            <div class="description">
-                <p>Maya Bay, made famous by the film 'The Beach', features stunning limestone cliffs, clear waters, and a beautiful sandy shoreline. Located on Koh Phi Phi Leh in Thailand, it is a popular spot for snorkeling and sunbathing.</p>
-                <p>The bay is flanked by steep cliffs and lush greenery, providing a picturesque backdrop for visitors.</p>
-            </div>
-            <div class="details">
-                <h4>Location Details</h4>
-                <ul>
-                    <li>📍 Koh Phi Phi Leh, Thailand</li>
-                    <li>🌡️ Average temp: 28-32°C (82-90°F)</li>
-                    <li>🏊‍♂️ Best for: Snorkeling, Sunbathing</li>
-                    <li>⏰ Best time to visit: November to April</li>
-                    <li>✈️ Nearest airport: Krabi International Airport (KBV)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="map-container">
-            <iframe 
-                width="100%"
-                height="100%"
-                style="border:0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10241.591145682774!2d99.21531444188084!3d7.673301784873489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30545a748e03b08f%3A0x9bcbcb16bbfb028b!2sMaya%20Bay!5e1!3m2!1sen!2sie!4v1730222670916!5m2!1sen!2sie"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-    <section class="beach-detail">
-        <h2>Tulum Beach, Mexico</h2>
-        <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Tulum Beach with ancient ruins overlooking the sea" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Soft white sand and palm trees on Tulum Beach" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Turquoise waters lapping against the shore at Tulum Beach" 
-                 class="gallery-img" 
-                 width="400" 
-                 height="250">
-        </div>
-        <div class="beach-info">
-            <div class="description">
-                <p>Tulum Beach, known for its stunning shoreline, ancient ruins, and vibrant nightlife, is a fantastic destination. Located on the Caribbean coast of Mexico, it offers both relaxation and cultural experiences.</p>
-                <p>Visitors can enjoy the sun while taking in views of the coastal Mayan ruins, adding a unique historical element to the beach experience.</p>
-            </div>
-            <div class="details">
-                <h4>Location Details</h4>
-                <ul>
-                    <li>📍 Tulum, Mexico</li>
-                    <li>🌡️ Average temp: 25-30°C (77-86°F)</li>
-                    <li>🏊‍♂️ Best for: Swimming, Culture</li>
-                    <li>⏰ Best time to visit: December to April</li>
-                    <li>✈️ Nearest airport: Cancun International Airport (CUN)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="map-container">
-            <iframe 
-                width="100%"
-                height="100%"
-                style="border:0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27249.684228423275!2d-87.4628242401807!3d20.2095892231645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e9e63e6f7f779%3A0xb6499b4c94c50270!2sTulum%20Beach!5e1!3m2!1sen!2sie!4v1730222833837!5m2!1sen!2sie"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-    <section class="beach-detail">
-        <h2>Anse Marron, Seychelles</h2>
+        <h2 class="oleo">Anse Marron, Seychelles</h2>
         <div class="beach-gallery">
             <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
                  alt="Scenic view of Anse Marron with rocks and turquoise waters" 
@@ -744,8 +586,210 @@ iframe{
         </div>
     </section>
 
+    <div class="gap" id="greece"></div>
+
     <section class="beach-detail">
-        <h2>Pink Sands Beach, Bahamas</h2>
+        <h2 class="oleo">Navagio Beach, Greece</h2>
+        <div class="beach-gallery">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Aerial view of shipwreck beach with turquoise waters and limestone cliffs" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Famous shipwreck on white sand beach surrounded by steep cliffs" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Sunset view of Navagio Beach with golden light on limestone walls" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+        </div>
+        <div class="beach-info">
+            <div class="description">
+                <p>Also known as Shipwreck Beach, Navagio Beach is one of the most dramatic beaches in the world. Located on Zakynthos Island, this stunning cove is only accessible by boat and features a famous shipwreck set against limestone cliffs and crystal-clear waters.</p>
+                <p>The beach got its nickname from the MV Panagiotis shipwreck, which ran aground in 1980. The contrast of the rusting ship against the pristine white beach and turquoise waters creates a unique and unforgettable scene.</p>
+            </div>
+            <div class="details">
+                <h4>Location Details</h4>
+                <ul>
+                    <li>📍 Zakynthos Island, Greece</li>
+                    <li>🌡️ Average temp: 18-28°C (64-82°F)</li>
+                    <li>🏊‍♂️ Best for: Photography, Swimming</li>
+                    <li>⏰ Best time to visit: May to September</li>
+                    <li>✈️ Nearest airport: Zakynthos International Airport (ZTH)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                width="100%"
+                height="100%"
+                style="border:0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25217.08927802151!2d20.62076975038519!3d37.968838355207376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1350125041605d91%3A0x9c999cbfbd4528a4!2sNavagio%20Beach!5e1!3m2!1sen!2sie!4v1730222455125!5m2!1sen!2sie"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div class="gap" id="australia"></div>
+
+    <section class="beach-detail">
+        <h2 class="oleo">Whitehaven Beach, Australia</h2>
+        <div class="beach-gallery">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Aerial view of swirling white sand and turquoise waters at Hill Inlet" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Pure white silica sand beach stretching for miles" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Crystal clear waters meeting pristine white sand at Whitehaven Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+        </div>
+        <div class="beach-info">
+            <div class="description">
+                <p>Whitehaven Beach is known for its stunning white silica sand and crystal-clear waters. Located on Whitsunday Island in Australia, this beach stretches for 7 kilometers and is celebrated for its pristine environment and breathtaking colors.</p>
+                <p>The beach is accessible by boat, seaplane, or helicopter, making it a perfect spot for day trips and picturesque views from above.</p>
+            </div>
+            <div class="details">
+                <h4>Location Details</h4>
+                <ul>
+                    <li>📍 Whitsunday Island, Australia</li>
+                    <li>🌡️ Average temp: 24-30°C (75-86°F)</li>
+                    <li>🏊‍♂️ Best for: Swimming, Sunbathing</li>
+                    <li>⏰ Best time to visit: May to September</li>
+                    <li>✈️ Nearest airport: Hamilton Island Airport (HTI)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                width="100%"
+                height="100%"
+                style="border:0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12290.137034319992!2d149.04347120000003!3d-20.2995624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ab3bbba09c355c1%3A0x5c07e45f5b5825e2!2sWhitehaven%20Beach!5e1!3m2!1sen!2sie!4v1730222576201!5m2!1sen!2sie"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div class="gap" id="thailand"></div>
+
+    <section class="beach-detail">
+        <h2 class="oleo">Maya Bay, Thailand</h2>
+        <div class="beach-gallery">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Stunning view of Maya Bay surrounded by limestone cliffs" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Clear turquoise waters and soft sandy beach at Maya Bay" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Lush green hills surrounding the beach at Maya Bay" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+        </div>
+        <div class="beach-info">
+            <div class="description">
+                <p>Maya Bay, made famous by the film 'The Beach', features stunning limestone cliffs, clear waters, and a beautiful sandy shoreline. Located on Koh Phi Phi Leh in Thailand, it is a popular spot for snorkeling and sunbathing.</p>
+                <p>The bay is flanked by steep cliffs and lush greenery, providing a picturesque backdrop for visitors.</p>
+            </div>
+            <div class="details">
+                <h4>Location Details</h4>
+                <ul>
+                    <li>📍 Koh Phi Phi Leh, Thailand</li>
+                    <li>🌡️ Average temp: 28-32°C (82-90°F)</li>
+                    <li>🏊‍♂️ Best for: Snorkeling, Sunbathing</li>
+                    <li>⏰ Best time to visit: November to April</li>
+                    <li>✈️ Nearest airport: Krabi International Airport (KBV)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                width="100%"
+                height="100%"
+                style="border:0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10241.591145682774!2d99.21531444188084!3d7.673301784873489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30545a748e03b08f%3A0x9bcbcb16bbfb028b!2sMaya%20Bay!5e1!3m2!1sen!2sie!4v1730222670916!5m2!1sen!2sie"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div class="gap" id="mexico"></div>
+
+    <section class="beach-detail">
+        <h2 class="oleo">Tulum Beach, Mexico</h2>
+        <div class="beach-gallery">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Tulum Beach with ancient ruins overlooking the sea" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Soft white sand and palm trees on Tulum Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+                 alt="Turquoise waters lapping against the shore at Tulum Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+        </div>
+        <div class="beach-info">
+            <div class="description">
+                <p>Tulum Beach, known for its stunning shoreline, ancient ruins, and vibrant nightlife, is a fantastic destination. Located on the Caribbean coast of Mexico, it offers both relaxation and cultural experiences.</p>
+                <p>Visitors can enjoy the sun while taking in views of the coastal Mayan ruins, adding a unique historical element to the beach experience.</p>
+            </div>
+            <div class="details">
+                <h4>Location Details</h4>
+                <ul>
+                    <li>📍 Tulum, Mexico</li>
+                    <li>🌡️ Average temp: 25-30°C (77-86°F)</li>
+                    <li>🏊‍♂️ Best for: Swimming, Culture</li>
+                    <li>⏰ Best time to visit: December to April</li>
+                    <li>✈️ Nearest airport: Cancun International Airport (CUN)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                width="100%"
+                height="100%"
+                style="border:0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27249.684228423275!2d-87.4628242401807!3d20.2095892231645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e9e63e6f7f779%3A0xb6499b4c94c50270!2sTulum%20Beach!5e1!3m2!1sen!2sie!4v1730222833837!5m2!1sen!2sie"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div class="gap" id="bahamas"></div>
+
+    <section class="beach-detail">
+        <h2 class="oleo">Pink Sands Beach, Bahamas</h2>
         <div class="beach-gallery">
             <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
                  alt="Famous pink sand beach with gentle waves" 
@@ -792,8 +836,10 @@ iframe{
         </div>
     </section>
 
+    <div class="gap" id="virgin"></div>
+
     <section class="beach-detail">
-        <h2>Trunk Bay, US Virgin Islands</h2>
+        <h2 class="oleo">Trunk Bay, US Virgin Islands</h2>
         <div class="beach-gallery">
             <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
                  alt="Beautiful Trunk Bay with soft white sand and clear waters" 
@@ -840,8 +886,10 @@ iframe{
         </div>
     </section>
 
+    <div class="gap" id="turks"></div>
+
     <section class="beach-detail">
-        <h2>Grace Bay, Turks and Caicos</h2>
+        <h2 class="oleo">Grace Bay, Turks and Caicos</h2>
         <div class="beach-gallery">
             <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
                  alt="Stunning view of Grace Bay with soft sands and vibrant blue waters" 
@@ -930,11 +978,521 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-</body>
-</html>
-<body>
-  <!-- Content -->
-  <script src="/assets/js/xy-polyfill.js" nomodule></script>
-  <script src="/assets/js/script.js" type="module"></script>
+
+<!---Tilt.js for tilting beach gallery images-->
+<script>
+    var VanillaTilt = (function () {
+'use strict';
+
+/**
+ * Created by Sergiu Șandor (micku7zu) on 1/27/2017.
+ * Original idea: https://github.com/gijsroge/tilt.js
+ * MIT License.
+ * Version 1.8.1
+ */
+
+class VanillaTilt {
+  constructor(element, settings = {}) {
+    if (!(element instanceof Node)) {
+      throw ("Can't initialize VanillaTilt because " + element + " is not a Node.");
+    }
+
+    this.width = null;
+    this.height = null;
+    this.clientWidth = null;
+    this.clientHeight = null;
+    this.left = null;
+    this.top = null;
+
+    // for Gyroscope sampling
+    this.gammazero = null;
+    this.betazero = null;
+    this.lastgammazero = null;
+    this.lastbetazero = null;
+
+    this.transitionTimeout = null;
+    this.updateCall = null;
+    this.event = null;
+
+    this.updateBind = this.update.bind(this);
+    this.resetBind = this.reset.bind(this);
+
+    this.element = element;
+    this.settings = this.extendSettings(settings);
+
+    this.reverse = this.settings.reverse ? -1 : 1;
+    this.resetToStart = VanillaTilt.isSettingTrue(this.settings["reset-to-start"]);
+    this.glare = VanillaTilt.isSettingTrue(this.settings.glare);
+    this.glarePrerender = VanillaTilt.isSettingTrue(this.settings["glare-prerender"]);
+    this.fullPageListening = VanillaTilt.isSettingTrue(this.settings["full-page-listening"]);
+    this.gyroscope = VanillaTilt.isSettingTrue(this.settings.gyroscope);
+    this.gyroscopeSamples = this.settings.gyroscopeSamples;
+
+    this.elementListener = this.getElementListener();
+
+    if (this.glare) {
+      this.prepareGlare();
+    }
+
+    if (this.fullPageListening) {
+      this.updateClientSize();
+    }
+
+    this.addEventListeners();
+    this.reset();
+
+    if (this.resetToStart === false) {
+      this.settings.startX = 0;
+      this.settings.startY = 0;
+    }
+  }
+
+  static isSettingTrue(setting) {
+    return setting === "" || setting === true || setting === 1;
+  }
+
+  /**
+   * Method returns element what will be listen mouse events
+   * @return {Node}
+   */
+  getElementListener() {
+    if (this.fullPageListening) {
+      return window.document;
+    }
+
+    if (typeof this.settings["mouse-event-element"] === "string") {
+      const mouseEventElement = document.querySelector(this.settings["mouse-event-element"]);
+
+      if (mouseEventElement) {
+        return mouseEventElement;
+      }
+    }
+
+    if (this.settings["mouse-event-element"] instanceof Node) {
+      return this.settings["mouse-event-element"];
+    }
+
+    return this.element;
+  }
+
+  /**
+   * Method set listen methods for this.elementListener
+   * @return {Node}
+   */
+  addEventListeners() {
+    this.onMouseEnterBind = this.onMouseEnter.bind(this);
+    this.onMouseMoveBind = this.onMouseMove.bind(this);
+    this.onMouseLeaveBind = this.onMouseLeave.bind(this);
+    this.onWindowResizeBind = this.onWindowResize.bind(this);
+    this.onDeviceOrientationBind = this.onDeviceOrientation.bind(this);
+
+    this.elementListener.addEventListener("mouseenter", this.onMouseEnterBind);
+    this.elementListener.addEventListener("mouseleave", this.onMouseLeaveBind);
+    this.elementListener.addEventListener("mousemove", this.onMouseMoveBind);
+
+    if (this.glare || this.fullPageListening) {
+      window.addEventListener("resize", this.onWindowResizeBind);
+    }
+
+    if (this.gyroscope) {
+      window.addEventListener("deviceorientation", this.onDeviceOrientationBind);
+    }
+  }
+
+  /**
+   * Method remove event listeners from current this.elementListener
+   */
+  removeEventListeners() {
+    this.elementListener.removeEventListener("mouseenter", this.onMouseEnterBind);
+    this.elementListener.removeEventListener("mouseleave", this.onMouseLeaveBind);
+    this.elementListener.removeEventListener("mousemove", this.onMouseMoveBind);
+
+    if (this.gyroscope) {
+      window.removeEventListener("deviceorientation", this.onDeviceOrientationBind);
+    }
+
+    if (this.glare || this.fullPageListening) {
+      window.removeEventListener("resize", this.onWindowResizeBind);
+    }
+  }
+
+  destroy() {
+    clearTimeout(this.transitionTimeout);
+    if (this.updateCall !== null) {
+      cancelAnimationFrame(this.updateCall);
+    }
+
+    this.element.style.willChange = "";
+    this.element.style.transition = "";
+    this.element.style.transform = "";
+    this.resetGlare();
+
+    this.removeEventListeners();
+    this.element.vanillaTilt = null;
+    delete this.element.vanillaTilt;
+
+    this.element = null;
+  }
+
+  onDeviceOrientation(event) {
+    if (event.gamma === null || event.beta === null) {
+      return;
+    }
+
+    this.updateElementPosition();
+
+    if (this.gyroscopeSamples > 0) {
+      this.lastgammazero = this.gammazero;
+      this.lastbetazero = this.betazero;
+
+      if (this.gammazero === null) {
+        this.gammazero = event.gamma;
+        this.betazero = event.beta;
+      } else {
+        this.gammazero = (event.gamma + this.lastgammazero) / 2;
+        this.betazero = (event.beta + this.lastbetazero) / 2;
+      }
+
+      this.gyroscopeSamples -= 1;
+    }
+
+    const totalAngleX = this.settings.gyroscopeMaxAngleX - this.settings.gyroscopeMinAngleX;
+    const totalAngleY = this.settings.gyroscopeMaxAngleY - this.settings.gyroscopeMinAngleY;
+
+    const degreesPerPixelX = totalAngleX / this.width;
+    const degreesPerPixelY = totalAngleY / this.height;
+
+    const angleX = event.gamma - (this.settings.gyroscopeMinAngleX + this.gammazero);
+    const angleY = event.beta - (this.settings.gyroscopeMinAngleY + this.betazero);
+
+    const posX = angleX / degreesPerPixelX;
+    const posY = angleY / degreesPerPixelY;
+
+    if (this.updateCall !== null) {
+      cancelAnimationFrame(this.updateCall);
+    }
+
+    this.event = {
+      clientX: posX + this.left,
+      clientY: posY + this.top,
+    };
+
+    this.updateCall = requestAnimationFrame(this.updateBind);
+  }
+
+  onMouseEnter() {
+    this.updateElementPosition();
+    this.element.style.willChange = "transform";
+    this.setTransition();
+  }
+
+  onMouseMove(event) {
+    if (this.updateCall !== null) {
+      cancelAnimationFrame(this.updateCall);
+    }
+
+    this.event = event;
+    this.updateCall = requestAnimationFrame(this.updateBind);
+  }
+
+  onMouseLeave() {
+    this.setTransition();
+
+    if (this.settings.reset) {
+      requestAnimationFrame(this.resetBind);
+    }
+  }
+
+  reset() {
+    this.onMouseEnter();
+
+    if (this.fullPageListening) {
+      this.event = {
+        clientX: (this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.clientWidth,
+        clientY: (this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.clientHeight
+      };
+    } else {
+      this.event = {
+        clientX: this.left + ((this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.width),
+        clientY: this.top + ((this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.height)
+      };
+    }
+
+    let backupScale = this.settings.scale;
+    this.settings.scale = 1;
+    this.update();
+    this.settings.scale = backupScale;
+    this.resetGlare();
+  }
+
+  resetGlare() {
+    if (this.glare) {
+      this.glareElement.style.transform = "rotate(180deg) translate(-50%, -50%)";
+      this.glareElement.style.opacity = "0";
+    }
+  }
+
+  getValues() {
+    let x, y;
+
+    if (this.fullPageListening) {
+      x = this.event.clientX / this.clientWidth;
+      y = this.event.clientY / this.clientHeight;
+    } else {
+      x = (this.event.clientX - this.left) / this.width;
+      y = (this.event.clientY - this.top) / this.height;
+    }
+
+    x = Math.min(Math.max(x, 0), 1);
+    y = Math.min(Math.max(y, 0), 1);
+
+    let tiltX = (this.reverse * (this.settings.max - x * this.settings.max * 2)).toFixed(2);
+    let tiltY = (this.reverse * (y * this.settings.max * 2 - this.settings.max)).toFixed(2);
+    let angle = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
+
+    return {
+      tiltX: tiltX,
+      tiltY: tiltY,
+      percentageX: x * 100,
+      percentageY: y * 100,
+      angle: angle
+    };
+  }
+
+  updateElementPosition() {
+    let rect = this.element.getBoundingClientRect();
+
+    this.width = this.element.offsetWidth;
+    this.height = this.element.offsetHeight;
+    this.left = rect.left;
+    this.top = rect.top;
+  }
+
+  update() {
+    let values = this.getValues();
+
+    this.element.style.transform = "perspective(" + this.settings.perspective + "px) " +
+      "rotateX(" + (this.settings.axis === "x" ? 0 : values.tiltY) + "deg) " +
+      "rotateY(" + (this.settings.axis === "y" ? 0 : values.tiltX) + "deg) " +
+      "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")";
+
+    if (this.glare) {
+      this.glareElement.style.transform = `rotate(${values.angle}deg) translate(-50%, -50%)`;
+      this.glareElement.style.opacity = `${values.percentageY * this.settings["max-glare"] / 100}`;
+    }
+
+    this.element.dispatchEvent(new CustomEvent("tiltChange", {
+      "detail": values
+    }));
+
+    this.updateCall = null;
+  }
+
+  /**
+   * Appends the glare element (if glarePrerender equals false)
+   * and sets the default style
+   */
+  prepareGlare() {
+    // If option pre-render is enabled we assume all html/css is present for an optimal glare effect.
+    if (!this.glarePrerender) {
+      // Create glare element
+      const jsTiltGlare = document.createElement("div");
+      jsTiltGlare.classList.add("js-tilt-glare");
+
+      const jsTiltGlareInner = document.createElement("div");
+      jsTiltGlareInner.classList.add("js-tilt-glare-inner");
+
+      jsTiltGlare.appendChild(jsTiltGlareInner);
+      this.element.appendChild(jsTiltGlare);
+    }
+
+    this.glareElementWrapper = this.element.querySelector(".js-tilt-glare");
+    this.glareElement = this.element.querySelector(".js-tilt-glare-inner");
+
+    if (this.glarePrerender) {
+      return;
+    }
+
+    Object.assign(this.glareElementWrapper.style, {
+      "position": "absolute",
+      "top": "0",
+      "left": "0",
+      "width": "100%",
+      "height": "100%",
+      "overflow": "hidden",
+      "pointer-events": "none",
+      "border-radius": "inherit"
+    });
+
+    Object.assign(this.glareElement.style, {
+      "position": "absolute",
+      "top": "50%",
+      "left": "50%",
+      "pointer-events": "none",
+      "background-image": `linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)`,
+      "transform": "rotate(180deg) translate(-50%, -50%)",
+      "transform-origin": "0% 0%",
+      "opacity": "0"
+    });
+
+    this.updateGlareSize();
+  }
+
+  updateGlareSize() {
+    if (this.glare) {
+      const glareSize = (this.element.offsetWidth > this.element.offsetHeight ? this.element.offsetWidth : this.element.offsetHeight) * 2;
+
+      Object.assign(this.glareElement.style, {
+        "width": `${glareSize}px`,
+        "height": `${glareSize}px`,
+      });
+    }
+  }
+
+  updateClientSize() {
+    this.clientWidth = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+
+    this.clientHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+  }
+
+  onWindowResize() {
+    this.updateGlareSize();
+    this.updateClientSize();
+  }
+
+  setTransition() {
+    clearTimeout(this.transitionTimeout);
+    this.element.style.transition = this.settings.speed + "ms " + this.settings.easing;
+    if (this.glare) this.glareElement.style.transition = `opacity ${this.settings.speed}ms ${this.settings.easing}`;
+
+    this.transitionTimeout = setTimeout(() => {
+      this.element.style.transition = "";
+      if (this.glare) {
+        this.glareElement.style.transition = "";
+      }
+    }, this.settings.speed);
+
+  }
+
+  /**
+   * Method return patched settings of instance
+   * @param {boolean} settings.reverse - reverse the tilt direction
+   * @param {number} settings.max - max tilt rotation (degrees)
+   * @param {startX} settings.startX - the starting tilt on the X axis, in degrees. Default: 0
+   * @param {startY} settings.startY - the starting tilt on the Y axis, in degrees. Default: 0
+   * @param {number} settings.perspective - Transform perspective, the lower the more extreme the tilt gets
+   * @param {string} settings.easing - Easing on enter/exit
+   * @param {number} settings.scale - 2 = 200%, 1.5 = 150%, etc..
+   * @param {number} settings.speed - Speed of the enter/exit transition
+   * @param {boolean} settings.transition - Set a transition on enter/exit
+   * @param {string|null} settings.axis - What axis should be enabled. Can be "x" or "y"
+   * @param {boolean} settings.glare - if it should have a "glare" effect
+   * @param {number} settings.max-glare - the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
+   * @param {boolean} settings.glare-prerender - false = VanillaTilt creates the glare elements for you, otherwise
+   * @param {boolean} settings.full-page-listening - If true, parallax effect will listen to mouse move events on the whole document, not only the selected element
+   * @param {string|object} settings.mouse-event-element - String selector or link to HTML-element what will be listen mouse events
+   * @param {boolean} settings.reset - false = If the tilt effect has to be reset on exit
+   * @param {boolean} settings.reset-to-start - true = On reset event (mouse leave) will return to initial start angle (if startX or startY is set)
+   * @param {gyroscope} settings.gyroscope - Enable tilting by deviceorientation events
+   * @param {gyroscopeSensitivity} settings.gyroscopeSensitivity - Between 0 and 1 - The angle at which max tilt position is reached. 1 = 90deg, 0.5 = 45deg, etc..
+   * @param {gyroscopeSamples} settings.gyroscopeSamples - How many gyroscope moves to decide the starting position.
+   */
+  extendSettings(settings) {
+    let defaultSettings = {
+      reverse: false,
+      max: 15,
+      startX: 0,
+      startY: 0,
+      perspective: 1000,
+      easing: "cubic-bezier(.03,.98,.52,.99)",
+      scale: 1,
+      speed: 300,
+      transition: true,
+      axis: null,
+      glare: false,
+      "max-glare": 1,
+      "glare-prerender": false,
+      "full-page-listening": false,
+      "mouse-event-element": null,
+      reset: true,
+      "reset-to-start": true,
+      gyroscope: true,
+      gyroscopeMinAngleX: -45,
+      gyroscopeMaxAngleX: 45,
+      gyroscopeMinAngleY: -45,
+      gyroscopeMaxAngleY: 45,
+      gyroscopeSamples: 10
+    };
+
+    let newSettings = {};
+    for (var property in defaultSettings) {
+      if (property in settings) {
+        newSettings[property] = settings[property];
+      } else if (this.element.hasAttribute("data-tilt-" + property)) {
+        let attribute = this.element.getAttribute("data-tilt-" + property);
+        try {
+          newSettings[property] = JSON.parse(attribute);
+        } catch (e) {
+          newSettings[property] = attribute;
+        }
+
+      } else {
+        newSettings[property] = defaultSettings[property];
+      }
+    }
+
+    return newSettings;
+  }
+
+  static init(elements, settings) {
+    if (elements instanceof Node) {
+      elements = [elements];
+    }
+
+    if (elements instanceof NodeList) {
+      elements = [].slice.call(elements);
+    }
+
+    if (!(elements instanceof Array)) {
+      return;
+    }
+
+    elements.forEach((element) => {
+      if (!("vanillaTilt" in element)) {
+        element.vanillaTilt = new VanillaTilt(element, settings);
+      }
+    });
+  }
+}
+
+if (typeof document !== "undefined") {
+  /* expose the class to window */
+  window.VanillaTilt = VanillaTilt;
+
+  /**
+   * Auto load
+   */
+  VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+}
+
+return VanillaTilt;
+
+}());
+</script>
+<cript>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".gallery-img"), {
+            max: 25,
+            speed: 400
+        });
+        
+        //It also supports NodeList
+        VanillaTilt.init(document.querySelectorAll(".gallery-img"));
+    </script>
+</cript>
 </body>
 </html>
