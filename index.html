@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html>  
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
@@ -323,6 +324,56 @@ iframe{
 }
 
 /* Add to existing nav styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: transparent;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.3s;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: linear-gradient(62deg,deepskyblue,#2d76b5,#1a9285,#096984,#0c66a1,#069f7a);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: rgb(64, 209, 209);
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Modify existing media query for mobile responsiveness */
 @media (max-width: 1250px) {
     #home{
     margin-top:-9vh;
@@ -362,6 +413,7 @@ iframe{
         background: linear-gradient(62deg, deepskyblue, #2d76b5, #1a9285, #096984, #0c66a1, #069f7a);
         background-size: 360% 360%;
         top: 0;
+        min-height: 100vh;
         padding-top: 5vh;
         padding-bottom: 20vh;
         animation: gradient-animation 18s ease infinite;
@@ -412,6 +464,34 @@ iframe{
     .description {
         font-size: 1rem;
     }
+
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .dropbtn {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .dropdown-content a {
+        text-align: center;
+    }
+    
+    .nav-links.active .dropdown-content {
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 }
 
 @media (max-width: 600px) {
@@ -436,16 +516,58 @@ iframe{
         <span class="bar"></span>
     </button>
     <div class="nav-links">
-        <a href="#home">Home</a>                        <!---line 391--->
-        <a href="#borabora">Bora Bora</a>               <!---line 400--->
-        <a href="#seychelles">Seychelles</a>            <!---line 455---> 
-        <a href="#greece">Greece</a>                    <!---line 553--->
-        <a href="#australia">Australia</a>              <!---line 603--->
-        <a href="#thailand">Thailand</a>                <!---line 653--->
-        <a href="#mexico">Mexico</a>                    <!---line 703--->
-        <a href="#bahamas">Bahamas</a>                  <!---line 753--->
-        <a href="#virgin">US Virgin Islands</a>         <!---line 803--->
-        <a href="#turks">Turks and Caicos</a>           <!---line 853--->
+        <div class="dropdown">
+          <button class="dropbtn">Home</button>
+          <div class="dropdown-content">
+            <a href="#home">Home</a>
+          </div>
+      </div>
+        <div class="dropdown">
+            <button class="dropbtn">Oceania</button>
+            <div class="dropdown-content">
+                <a href="#borabora">Matira Beach, Bora Bora</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Australia</button>
+            <div class="dropdown-content">
+                <a href="#australia">Whitehaven Beach</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Africa</button>
+            <div class="dropdown-content">
+                <a href="#seychelles">Anse Source d'Argent</a>
+                <a href="#ansemarron">Anse Marron</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Europe</button>
+            <div class="dropdown-content">
+                <a href="#greece">Navagio Beach</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Asia</button>
+            <div class="dropdown-content">
+                <a href="#thailand">Maya Bay</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Americas</button>
+            <div class="dropdown-content">
+                <a href="#mexico">Tulum Beach</a>
+                <a href="#bahamas">Pink Sands Beach</a>
+                <a href="#virgin">Trunk Bay</a>
+                <a href="#turks">Grace Bay</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Info</button>
+            <div class="dropdown-content">
+                <a href="info.html">Contact</a>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -567,6 +689,8 @@ iframe{
             </iframe>
         </div>
     </section>
+
+    <div class="gap" id="ansemarron"></div>
 
     <section class="beach-detail">
         <h2 class="oleo">Anse Marron, Seychelles</h2>
@@ -1006,6 +1130,21 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
         });
     });
+
+    // Add touch support for mobile devices
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            dropdowns.forEach(d => {
+                if (d !== dropdown) {
+                    d.querySelector('.dropdown-content').style.display = 'none';
+                }
+            });
+            const content = this.querySelector('.dropdown-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 });
 </script>
 
@@ -1443,7 +1582,7 @@ class VanillaTilt {
       speed: 300,
       transition: true,
       axis: null,
-      glare: false,
+      glare: true,
       "max-glare": 1,
       "glare-prerender": false,
       "full-page-listening": false,
