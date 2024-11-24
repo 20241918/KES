@@ -45,6 +45,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     animation: startup 2s cubic-bezier(.34,.94,.87,.26) both;
+    overflow: hidden; /* Add this line */
 }
 
 *::-webkit-scrollbar {
@@ -500,6 +501,46 @@ nav {
         height: 55vh;
     }
 }
+
+/* Update the confetti styles */
+.confetti {
+  position: fixed;
+  width: 20px;
+  height: 35px;
+  clip-path: path('M10,35 Q15,25 20,20 Q15,15 20,10 Q15,5 20,0 Q10,5 10,0 Q5,5 0,0 Q5,15 0,10 Q5,25 0,20 Q5,35 10,35');
+  animation: confetti-rise 4s ease-in-out forwards; /* Increased duration to 4s */
+  z-index: 1000;
+  pointer-events: none;
+  bottom: -50px; /* Start below viewport */
+}
+
+/* New rising animation */
+@keyframes confetti-rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  
+  20% {
+    opacity: 0.8;
+    transform: translateY(-20vh) rotate(-180deg) translateX(var(--random-x));
+  }
+  
+  50% {
+    opacity: 0.6;
+    transform: translateY(-50vh) rotate(-360deg) translateX(calc(var(--random-x) * -1));
+  }
+  
+  75% {
+    opacity: 0.4;
+    transform: translateY(-75vh) rotate(-720deg) translateX(var(--random-x));
+  }
+  
+  100% {
+    transform: translateY(-120vh) rotate(-1080deg) translateX(calc(var(--random-x) * -1));
+    opacity: 0;
+  }
+}
 </style>
 </head>
 <body class="roboto-condensed">
@@ -512,9 +553,6 @@ nav {
     </button>
     <div class="nav-links">
         <a href="index.html">Back to Best Beaches</a>
-        
-        
-        </div>
     </div>
 </nav>
 
@@ -751,6 +789,58 @@ nav {
   </script>
 
 <script>
+    function createConfetti() {
+      const colors = ['#00bfff', '#2d76b5', '#1a9285', '#096984', '#0c66a1', '#069f7a'];
+      const confettiCount = 50;
+      
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        
+        const randomX = (Math.random() - 0.5) * 300;
+        confetti.style.setProperty('--random-x', `${randomX}px`);
+        
+        const scale = 0.5 + Math.random() * 1;
+        confetti.style.transform = `scale(${scale})`;
+        
+        document.body.appendChild(confetti);
+        
+        // Remove confetti element after animation completes (4s animation + 2s max delay)
+        setTimeout(() => {
+          confetti.remove();
+        }, 6000);
+      }
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (name && email && message) {
+        // Hide form and show thank you message
+        this.style.display = 'none';
+        document.getElementById('thankYou').style.display = 'block';
+        
+        // Create confetti effect
+        createConfetti();
+
+        // Reset form
+        this.reset();
+        
+        console.log('Form submitted:', { name, email, message });
+      }
+    });
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         const sections = document.querySelectorAll('.beach-detail');
         
@@ -805,51 +895,7 @@ nav {
             });
         });
     });
-    </script>
-
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Reset errors
-      document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
-      
-      // Get form values
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      
-      // Validate
-      let isValid = true;
-      
-      if (!name) {
-        document.getElementById('nameError').style.display = 'block';
-        isValid = false;
-      }
-      
-      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        document.getElementById('emailError').style.display = 'block';
-        isValid = false;
-      }
-      
-      if (!message) {
-        document.getElementById('messageError').style.display = 'block';
-        isValid = false;
-      }
-      
-      if (isValid) {
-        // Hide form and show thank you message
-        this.style.display = 'none';
-        document.getElementById('thankYou').style.display = 'block';
-
-        // Optional: Reset form
-        this.reset();
-        
-        // Here you would typically send the form data to a server
-        console.log('Form submitted:', { name, email, message });
-      }
-    });
-  </script>
+</script>
 
 </body>
 </html>
