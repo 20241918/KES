@@ -10,502 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
-<style>
-html{
-    scroll-behavior: smooth;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.roboto-condensed {
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-}
-.oleo {
-  font-family: "Oleo Script", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
-body {
-    line-height: 1.6;
-    overflow-x: hidden;
-    animation: startup 2s cubic-bezier(.34,.94,.87,.26) both;
-}
-
-*::-webkit-scrollbar {
-  width: 10px;
-}
-*::-webkit-scrollbar-track {
-  background-color: #005D59;
-}
-
-*::-webkit-scrollbar-track:hover {
-  background-color: #005D59;
-}
-
-*::-webkit-scrollbar-track:active {
-  background-color: #005D59;
-}
-
-*::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  height:18vh;
-  background-color: #02FFAB;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #02C081;
-}
-
-*::-webkit-scrollbar-thumb:active {
-  background-color: #02C081;
-}
-
-nav {
-    padding: 1rem;
-    position: sticky;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 7vh;
-    background: linear-gradient(62deg,deepskyblue,#2d76b5,#1a9285,#096984,#0c66a1,#069f7a);
-    background-size: 360% 360%;
-    animation: gradient-animation 18s ease infinite;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: rgb(64, 209, 209);
-}
-
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    border-radius: 1px;
-    margin: 5px auto;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-.landing-hero {
-    height: 120vh;
-    width: 100%;
-    background:url('https://images.unsplash.com/photo-1705493583368-b25860b426a3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-
-.gap{
-    height:9vh;
-    background-color: transparent;
-}
-
-.hero-content {
-    padding: 2rem;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    margin-top: -20vh;
-    border-radius: 8px;
-    background-color: #244f66c4;
-    padding: 2vh;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(62deg, #00bfffa6, #2d76b5, #1a92858f, #09698469, #0c66a1, #069f7aa6);
-    background-size: 360% 360%;
-    animation: gradient-animation 18s ease infinite;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 8px;
-    background-color: #244f66c4;
-    padding: 2vh;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(245deg, #00bfffa6, #2d76b5, #1a92858f, #09698469, #0c66a1, #069f7aa6);
-    background-size: 360% 360%;
-    animation: gradient-animation 18s ease infinite;
-}
-
-.location-section {
-    padding: 2rem 4rem;
-    background-color: #244f66;
-    margin-top: 0vh;
-}
-
-.beach-detail {
-    margin-bottom: 4rem;
-    padding: 2rem;
-    border-radius: 15px;
-    animation: fadeIn 1s ease-out;
-    background: linear-gradient(245deg,deepskyblue,#2d76b5,#1a9285,#096984,#0c66a1,#069f7a);
-     background-size: 360% 360%;
-    animation: gradient-animation 18s ease infinite;
-}
-
-.beach-detail h2 {
-    color: #f2f9d4;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.beach-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    margin: 2rem 0;
-}
-
-.gallery-img {
-    width: 100%;
-    height: 60vh;
-    object-fit: cover;
-    border-radius: 8px;
-    mix-blend-mode: hard-light;
-    transition: all 0.6s;
-}
-
- .gallery-img:hover {
-    transform: scale(1.02);
-    position: static;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    margin: 0;
-    mix-blend-mode: normal;
-    overflow: hidden;
-    box-shadow: 0px 0px 4px 6px rgba(22,167,199,1);
-    transition: all 1s cubic-bezier(0,.81,.95,.22);
-}
-
-.beach-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.description {
-    font-size: 1.1rem;
-    color: #f2f9d4;
-    line-height: 1.8;
-}
-
-.details {
-    background: #348b80;
-    padding: 1.5rem;
-    mix-blend-mode: hard-light;
-    border-radius: 8px;
-}
-
-.details h4 {
-    color: #adffcb;
-    margin-bottom: 1rem;
-}
-
-.details ul {
-    list-style: none;
-}
-
-.details li {
-    color: #e7fff0;
-    margin-bottom: 0.5rem;
-}
-
-.map-container {
-    margin-top: 2rem;
-    width: 100%;
-    height: 50vh;
-    border-radius: 8px;
-}
-
-iframe{
-    border-radius: 8px;
-}
-
-/* Animations */
-
-@keyframes startup {
-     0% {
-            filter: blur(16px) grayscale(100%);
-            background-color: black;
-    opacity: 0;
-  }
-
-  30% {
-            filter: blur(10px) grayscale(100%) hue-rotate(150deg);
-            background-color: black;
-
-    opacity: 0.7;
-  }
-
-
-  100% {
-            filter: blur(0px) grayscale(0%) hue-rotate(0deg);
-            background-color: transparent;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* nav links animation*/
-@keyframes navin {
-  0% {
-    filter: blur(20px);
-    transform: translateZ(700px) translateY(-300px) translateX(400px);
-    opacity: 0;
-  }
-  100% {
-    filter: blur(0px);
-    transform: translateZ(0) translateY(0) translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Add to existing nav styles */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: transparent;
-    color: white;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    transition: color 0.3s;
-    font-family: "Roboto Condensed", sans-serif;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: linear-gradient(62deg,deepskyblue,#2d76b5,#1a9285,#096984,#0c66a1,#069f7a);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 8px;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    color: rgb(64, 209, 209);
-}
-
-.dropdown-content a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-}
-
-/* Modify existing media query for mobile responsiveness */
-@media (max-width: 1250px) {
-    #home{
-    margin-top:-9vh;
-    }
-
-    nav {
-    background: transparent;
-    
-    }
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        gap: 2.1rem;
-    }
-    
-    .nav-links a {
-        margin: 0.5rem 0;
-    }
-
-    .hamburger {
-        display: block;
-        z-index:1000;
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .nav-links.active {
-        display: flex;
-        background: linear-gradient(62deg, deepskyblue, #2d76b5, #1a9285, #096984, #0c66a1, #069f7a);
-        background-size: 360% 360%;
-        top: 0;
-        min-height: 100vh;
-        padding-top: 5vh;
-        padding-bottom: 20vh;
-        animation: gradient-animation 18s ease infinite;
-        animation: navin 1s cubic-bezier(0.785, 0.135, 0.150, 0.860) both;
-    }
-
-    /* Hamburger animation classes */
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-        padding: 6vmin;
-    }
-    .location-section {
-        padding: 1rem;
-    }
-
-    .beach-detail {
-        padding: 1rem;
-    }
-
-    .beach-detail h2 {
-        font-size: 2rem;
-    }
-
-    .beach-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-img {
-        height: 40vh;
-    }
-
-    .description {
-        font-size: 1rem;
-    }
-
-    .dropdown {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .dropdown-content {
-        position: relative;
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-    
-    .dropbtn {
-        width: 100%;
-        padding: 1rem;
-    }
-    
-    .dropdown-content a {
-        text-align: center;
-    }
-    
-    .nav-links.active .dropdown-content {
-        display: none;
-    }
-    
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-}
-
-@media (max-width: 600px) {
-    .details {
-        padding: 1rem;
-    }
-    .beach-gallery {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .map-container {
-        height: 55vh;
-    }
-}
-</style>
+<link rel="stylesheet" href="main.css">
 </head>
 <body class="roboto-condensed">
  
@@ -695,21 +200,27 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Anse Marron, Seychelles</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.tourbookers.com/media/supplier_trips/r5oqzxyo/r5oqzxyo_8kj5y3ny2660bw96_lg.jpg" 
                  alt="Scenic view of Anse Marron with rocks and turquoise waters" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://hochzeit-seychellen.de/wp-content/uploads/2012/12/hochzeit-seychellen-beitrag-987-2.jpg" 
                  alt="Picture-perfect beach with soft sand and lush greenery" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.worldbeachguide.com/photos/anse-marron-seychelles.jpg" 
                  alt="Tranquil waters of Anse Marron surrounded by nature" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
+            <img src="https://img3.oastatic.com/img2/98430344/max/variant.jpg" 
+                 alt="Tranquil waters of Anse Marron surrounded by nature" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+
         </div>
         <div class="beach-info">
             <div class="description">
@@ -746,17 +257,22 @@ iframe{
         <h2 class="oleo">Navagio Beach, Greece</h2>
         <div class="beach-gallery">
             <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Aerial view of shipwreck beach with turquoise waters and limestone cliffs" 
+                 alt="View of Navagio Beach, Greece with turquoise waters and limestone cliffs" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Famous shipwreck on white sand beach surrounded by steep cliffs" 
+            <img src="https://mybestplace.com/uploads/2022/05/Navagio-Beach-Zante-Grecia-SOCIAL.jpg" 
+                 alt="View of Navagio Beach, Greece with turquoise waters and limestone cliffs"  
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Sunset view of Navagio Beach with golden light on limestone walls" 
+            <img src="https://greekreporter.com/wp-content/uploads/2022/05/navagio-shipwreck-beach-zakynthos-credit-dronepicr-cc-by-2-wikimedia.jpg" 
+                 alt="View of Navagio Beach, Greece with turquoise waters and limestone cliffs" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://www.geoengineer.org/storage/news/3269/featured_image/24431/featured_image.jpeg" 
+                 alt="View of Navagio Beach, Greece with turquoise waters and limestone cliffs" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -795,18 +311,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Whitehaven Beach, Australia</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Aerial view of swirling white sand and turquoise waters at Hill Inlet" 
+            <img src="https://mybestplace.com/uploads/2023-2/08/Whitehaven-Beach-Australia-COVER-1.jpg" 
+                 alt="View of swirling white sand and turquoise waters at Whitehaven Beach, Australia" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Pure white silica sand beach stretching for miles" 
+            <img src="https://mybestplace.com/uploads/2023-2/08/Whitehaven-Beach-Australia-2.jpg" 
+                 alt="View of swirling white sand and turquoise waters at Whitehaven Beach, Australia" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.maritimo.com.au/wp-content/uploads/2022/06/WhitehavenBeach.jpg" 
                  alt="Crystal clear waters meeting pristine white sand at Whitehaven Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://i.ytimg.com/vi/YqFTAXm7_Qc/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGCkgZSheMA8=&rs=AOn4CLBghQJecb5q1Jcy8Rqm2VxnyFXHJQ" 
+                 alt="View of swirling white sand and turquoise waters at Whitehaven Beach, Australia" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -845,18 +366,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Maya Bay, Thailand</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://2troubletravelers.com/wp-content/uploads/2024/01/Maya-Bay-Thajsko.jpg" 
                  alt="Stunning view of Maya Bay surrounded by limestone cliffs" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://media.cnn.com/api/v1/images/stellar/prod/220727144315-05-maya-bay-thailand-recovery.jpg?c=original" 
                  alt="Clear turquoise waters and soft sandy beach at Maya Bay" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/7/2022/09/12233018/05-SAii-Phi-Phi-Activities-Excursion-tours-1201x900.jpg" 
                  alt="Lush green hills surrounding the beach at Maya Bay" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://www.patourlogy.com/wp-content/uploads/2023/10/beautiful-scenery-maya-bay-beach-phi-phi-island-krabi-thailand-landmark-destination-southeast-asia-travel-vacation-holiday-concept-scaled.webp" 
+                 alt="Stunning view of Maya Bay surrounded by limestone cliffs" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -895,18 +421,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Tulum Beach, Mexico</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.locogringo.com/sites/default/files/ttd-teaser/tulum_beach.jpg" 
                  alt="Tulum Beach with ancient ruins overlooking the sea" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/10/19/11/istock-605746792.jpg" 
                  alt="Soft white sand and palm trees on Tulum Beach" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.locogringo.com/sites/default/files/uploads/tulum_beach_1.jpg" 
                  alt="Turquoise waters lapping against the shore at Tulum Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://emot4jriyur.exactdn.com/wp-content/uploads/2021/10/photos-and-more-tulum_1.jpg?strip=all&lossy=1&ssl=1" 
+                 alt="Turquoise waters lapping against the shore at Tulum Beach"  
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -945,18 +476,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Pink Sands Beach, Bahamas</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://cdn.elebase.io/5d486d2e-87b2-401e-a93d-d0502e0d1a87/075f23db-22f7-489e-821f-afcba440de4e-bah50637b722db4dec09.jpg?w=680&h=382&fit=crop&rot=auto&dpr=2&q=75" 
                  alt="Famous pink sand beach with gentle waves" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://i.pinimg.com/originals/43/a7/04/43a704326e3f0c5c6b39fa59a4c62259.jpg" 
                  alt="Lush greenery and crystal clear waters at Pink Sands Beach" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Tranquil scene at Pink Sands Beach during sunrise" 
+            <img src="https://www.travelandleisure.com/thmb/YYgaymmm6LkvGUVlL45jG_hHJ0U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Pink-Sand-Beach-Harbour-Island-The-Bahamase-PINKBEACHES1117-4e4ae197d53a4f55a863429b5390b667.jpg" 
+                 alt="Tranquil scene at Pink Sands Beach" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/b3/39/ce/pink-sand.jpg?w=1200&h=-1&s=1" 
+                 alt="View of Navagio Beach with golden light on limestone walls" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -995,18 +531,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Trunk Bay, US Virgin Islands</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.nps.gov/common/uploads/cropped_image/primary/FA076FF7-9B69-91F9-6DA2CEE880946F96.jpg?width=1600&quality=90&mode=crop" 
                  alt="Beautiful Trunk Bay with soft white sand and clear waters" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/StJohnTrunkBay.jpg" 
                  alt="Scenic view of Trunk Bay with lush tropical surroundings" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Stunning sunset view at Trunk Bay" 
+            <img src="https://adventuresnolimits.com/wp-content/uploads/2022/07/josh-duncan-nRZoLSr0mEE-unsplash-Copy.jpg" 
+                 alt="View at Trunk Bay" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://morethanjustparks.com/wp-content/uploads/2020/12/virginislandsnationalpark1.jpg" 
+                 alt="View of Trunk Bay, US Virgin Islands with golden light on limestone walls" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -1045,18 +586,23 @@ iframe{
     <section class="beach-detail">
         <h2 class="oleo">Grace Bay, Turks and Caicos</h2>
         <div class="beach-gallery">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://gracebayclub.gracebayresorts.com/wp-content/uploads/sites/2/2022/10/gbc-hero-dining_the_lounge-00.jpg" 
                  alt="Stunning view of Grace Bay with soft sands and vibrant blue waters" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
-                 alt="Palm trees along Grace Bay Beach" 
+            <img src="https://www.visittci.com/thing/grace-bay-pr/grace-bay-beach_2048x1365.jpg" 
+                 alt="Grace Bay Beach" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
-            <img src="https://worldwildschooling.com/wp-content/uploads/2024/01/12-Exotic-Beaches_Navagio-Zakynthos-Greece_evannovostro_Adobe-Stock-Photo_122264479.jpg" 
+            <img src="https://www.visittci.com/thing/grace-bay-beach-pr/forbes-point_2048x1365.jpg" 
                  alt="Tranquil scene at Grace Bay during sunset" 
+                 class="gallery-img" 
+                 width="400" 
+                 height="250">
+            <img src="https://www.visittci.com/thing/grace-bay-beach-pr/aerial_2048x1365.jpg" 
+                 alt="Grace Bay, Turks and Caicos" 
                  class="gallery-img" 
                  width="400" 
                  height="250">
@@ -1134,17 +680,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add touch support for mobile devices
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            dropdowns.forEach(d => {
-                if (d !== dropdown) {
-                    d.querySelector('.dropdown-content').style.display = 'none';
-                }
-            });
-            const content = this.querySelector('.dropdown-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    const toggleDropdown = (e) => {
+        // Check if the target is a link and should navigate
+        if (e.target.tagName === 'A' && e.target.getAttribute('href')) {
+            return;
+        }
+        e.preventDefault();
+        dropdowns.forEach(d => {
+            if (d !== dropdown) {
+                d.querySelector('.dropdown-content').style.display = 'none';
+            }
         });
-    });
+        const content = dropdown.querySelector('.dropdown-content');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    };
+
+    dropdown.addEventListener('click', toggleDropdown);
+    dropdown.addEventListener('touchstart', toggleDropdown);
+});
+
 });
 </script>
 
